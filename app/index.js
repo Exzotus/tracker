@@ -14,7 +14,7 @@ const sidebarOptions = ["Home", "Mileage", "Receipts", "Reviews"]
 
 const Home = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    const [activePage, setActivePage] = useState(sidebarOptions[3]);
+    const [activePage, setActivePage] = useState(sidebarOptions[2]);
 
     const handleBurgerMenuClick = () => {
         setIsSidebarOpen(!isSidebarOpen);
