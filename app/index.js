@@ -5,15 +5,46 @@ import { Stack } from 'expo-router';
 import { COLORS, icons } from "../constants";
 import styles from './index.style';
 import { ScreenHeaderBtn } from "../components"
+import Home from './home/home'
+import Mileage from "./mileage/mileage"
+import Receipts from "./receipts/receipts"
+import Reviews from "./reviews/reviews"
 
 const sidebarOptions = ["Home", "Mileage", "Receipts", "Reviews"]
 
 const Home = () => {
-    const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [activePage, setActivePage] = useState(sidebarOptions[0]);
 
     const handleBurgerMenuClick = () => {
         setIsSidebarOpen(!isSidebarOpen);
     }
+
+    const displayPage = () => {
+        switch (activePage) {
+            case Home: 
+                return (
+                    <Home />
+                );
+
+            case Mileage:
+                return ( 
+                    <Mileage />
+                );
+
+            case Receipts:
+                return (
+                    <Receipts />
+                );
+
+            case Reviews:
+                return (
+                    <Reviews />
+                )
+            default:
+                return null;
+        }
+    };
 
     return (
         <SafeAreaView>
@@ -40,6 +71,10 @@ const Home = () => {
                     />
                 </View>
             )}
+
+            <View style={styles.mainContainer}>
+                {displayPage()}
+            </View>
 
         </SafeAreaView>
     )
