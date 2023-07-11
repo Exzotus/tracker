@@ -5,7 +5,7 @@ import { Stack } from 'expo-router';
 import { COLORS, icons } from "../constants";
 import styles from './index.style';
 import { ScreenHeaderBtn } from "../components"
-import Home from './home/home'
+import HomePage from './homePage/homePage'
 import Mileage from "./mileage/mileage"
 import Receipts from "./receipts/receipts"
 import Reviews from "./reviews/reviews"
@@ -14,30 +14,35 @@ const sidebarOptions = ["Home", "Mileage", "Receipts", "Reviews"]
 
 const Home = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    const [activePage, setActivePage] = useState(sidebarOptions[0]);
+    const [activePage, setActivePage] = useState(sidebarOptions[3]);
 
     const handleBurgerMenuClick = () => {
         setIsSidebarOpen(!isSidebarOpen);
     }
 
+    const handleSidebarClick = (pageName) => {
+        setActivePage(pageName)
+        setIsSidebarOpen(false);
+    }
+
     const displayPage = () => {
         switch (activePage) {
-            case Home: 
+            case "Home": 
                 return (
-                    <Home />
+                    <HomePage />
                 );
 
-            case Mileage:
+            case "Mileage":
                 return ( 
                     <Mileage />
                 );
 
-            case Receipts:
+            case "Receipts":
                 return (
                     <Receipts />
                 );
 
-            case Reviews:
+            case "Reviews":
                 return (
                     <Reviews />
                 )
@@ -64,7 +69,7 @@ const Home = () => {
                     <FlatList 
                         data={sidebarOptions}
                         renderItem={({ item }) => (
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() => handleSidebarClick(item)}>
                                 <Text style={styles.sidebarText}>{item}</Text>
                             </TouchableOpacity>
                         )}
