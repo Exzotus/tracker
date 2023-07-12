@@ -1,10 +1,14 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { View } from 'react-native'
+
+import { MileageTabs } from "../../components/"
+
+const tabs = ["All", "New", "Personal", "Work"];
 
 const mileage = () => {
   return (
     <View>
-        <Text>Mileage</Text>
+        <MileageTabs tabs={tabs} />
     </View>
   )
 }

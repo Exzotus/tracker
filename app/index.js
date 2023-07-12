@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FlatList, SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
 import { Stack } from 'expo-router';
 
@@ -14,7 +14,7 @@ const sidebarOptions = ["Home", "Mileage", "Receipts", "Reviews"]
 
 const Home = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    const [activePage, setActivePage] = useState(sidebarOptions[2]);
+    const [activePage, setActivePage] = useState(sidebarOptions[1]);
 
     const handleBurgerMenuClick = () => {
         setIsSidebarOpen(!isSidebarOpen);
@@ -52,7 +52,7 @@ const Home = () => {
     };
 
     return (
-        <SafeAreaView>
+        <SafeAreaView style={{ backgroundColor: COLORS.dgrey }}>
             <Stack.Screen 
                 options={{
                     headerStyle: { backgroundColor: COLORS.dgrey },
